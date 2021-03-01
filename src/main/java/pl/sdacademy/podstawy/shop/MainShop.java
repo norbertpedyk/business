@@ -7,7 +7,7 @@ public class MainShop {
     public static void main(String[] args) {
 
         //Obiekt sklep
-        Shop shop = new Shop();
+        Shop shop = new Shop(10);
 
         //Nowe produkty
 
@@ -20,10 +20,10 @@ public class MainShop {
         //Nowe Zamówienia
 
 
-        Order order1 = new Order("Marian Paździoch", rice, 10);
-        Order order2 = new Order("Alicja Nowak", onion, 25);
-        Order order3 = new Order("Marek Janusz", soap, 2);
-        Order order4 = new Order("Karol Bombowiec", candy, 3);
+        Order order1 = shop.addOrder("Marian Paździoch", rice, 10);
+        Order order2 = shop.addOrder("Alicja Nowak", onion, 25);
+        Order order3 = shop.addOrder("Marek Janusz", soap, 2);
+        Order order4 = shop.addOrder("Karol Bombowiec", candy, 3);
         Order order5 = shop.addOrder("Adam Nowak", rice, 300);
 
 
@@ -31,10 +31,11 @@ public class MainShop {
 
         System.out.println("-------------");
 
-        shop.setOrders(new Order[]{order1, order2, order3, order4, order5});
 
-        for (Order order : shop.getOrders()){
-            System.out.println(order.toString());
+        for (Order order : shop.getOrders()) {
+            if (order != null) {
+                System.out.println(order.toString());
+            }
         }
 
         System.out.println("-------------");
@@ -42,7 +43,7 @@ public class MainShop {
         // funkcja szukania po nazwie klienta
 
         for (Order order : shop.ordersLookupByClientsName("Nowak")) {
-            System.out.println(order.toString());
+                System.out.println(order.toString());
         }
 
         System.out.println("-------------");
